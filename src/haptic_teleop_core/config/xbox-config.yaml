@@ -1,0 +1,15 @@
+/**:
+  ros__parameters:
+    require_enable_button: true
+    enable_button: 4
+    axis_linear:
+      x: 1
+    scale_linear:
+      x: 0.5
+    axis_angular:
+      yaw: 0
+    scale_angular:
+      yaw: 0.5
+#Having issues with yaml file being properly read, might be due to it initially being empty and now
+#not being updated. Couldn't fix the issue so I hardcoded the parameters in the launch file instead
+#(easier for students to read?), but this yaml file is still here for reference and potential future use.
