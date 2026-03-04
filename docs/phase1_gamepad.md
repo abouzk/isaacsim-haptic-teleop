@@ -40,10 +40,20 @@ source install/setup.bash
 # Launch the gamepad node
 ros2 launch haptic_teleop_core phase1_gamepad.launch.py
 ```
-
 ---
 
-## 4. Execution & Controls
+## 4. Customizing Controller Mappings
+The default configuration (`gamepad_config.yaml`) is mapped for a standard Xbox controller. If you are using a different gamepad (like a PlayStation dual-shock), the physical buttons may map to different array indices in Linux.
+
+To find your specific button mappings:
+1. Open a new terminal and run: `ros2 topic echo /joy`
+2. Press the button you want to use as your Deadman Switch (e.g., Left Bumper). 
+3. Watch the `buttons: []` array on your screen. Count the position of the number that flips from `0` to `1` (remembering that the first number is index `0`).
+4. Open `src/haptic_teleop_core/config/gamepad_config.yaml` and change the `enable_button` value to your new index. 
+5. Rebuild the workspace (`colcon build`) to apply the changes.
+---
+
+## 5. Execution & Controls
 The node translates specific joystick axes into velocities, governed by a safety switch. 
 
 * **Safety Deadman Switch:** You **MUST** press and hold the **Left Bumper (LB)** for any commands to register. If released, the robot will immediately halt.
@@ -52,7 +62,7 @@ The node translates specific joystick axes into velocities, governed by a safety
 
 ---
 
-## 5. Hardware Troubleshooting Pipeline
+## 6. Hardware Troubleshooting Pipeline
 If the node launches successfully but the robot does not move, isolate the failure point by opening a new terminal and running these diagnostics in order:
 
 1. **Check Raw USB Data:** `ros2 topic echo /joy`
