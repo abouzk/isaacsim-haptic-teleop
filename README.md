@@ -1,3 +1,5 @@
+# DEPRECATED: Active development for haptic surgical teleoperation has moved to a SOFA-based architecture. This repository is archived for historical reference.
+
 # Surgical Digital Twins & Haptic Teleoperation (ROS2/Isaac Sim)
 
 **Context:** Independent Research & Mercer XLab Core Infrastructure
